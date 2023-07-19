@@ -1,4 +1,5 @@
 import ProtobufMessages
+import SwiftProtobuf
 
 public protocol TemplatesServiceProtocol {
     func cloneTemplate(blockId: BlockId) async throws

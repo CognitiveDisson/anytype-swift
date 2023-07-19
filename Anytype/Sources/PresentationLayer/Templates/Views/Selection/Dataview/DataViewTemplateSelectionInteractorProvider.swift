@@ -4,9 +4,10 @@ import AnytypeCore
 
 
 protocol TemplateSelectionInteractorProvider {
-    func setDefaultTemplate(model: TemplatePreviewModel) async throws
-    
     var userTemplates: AnyPublisher<[TemplatePreviewModel], Never> { get }
+    var objectTypeId: ObjectTypeId { get }
+    
+    func setDefaultTemplate(model: TemplatePreviewModel) async throws
 }
 
 final class DataviewTemplateSelectionInteractorProvider: TemplateSelectionInteractorProvider {
@@ -22,10 +23,10 @@ final class DataviewTemplateSelectionInteractorProvider: TemplateSelectionIntera
             }
             .eraseToAnyPublisher()
     }
+    let objectTypeId: ObjectTypeId
     
     private let setDocument: SetDocumentProtocol
     private let dataView: DataviewView
-    private let objectTypeId: ObjectTypeId
     
     private let subscriptionService: TemplatesSubscriptionServiceProtocol
     private let objectTypeProvider: ObjectTypeProviderProtocol

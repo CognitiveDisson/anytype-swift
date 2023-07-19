@@ -30,7 +30,7 @@ struct TemplatesSelectionView: View {
                 }
                 Spacer()
                 Button {
-                    
+                    model.onAddTemplateTap()
                 } label: {
                     Image(asset: .X32.plus)
                         .tint(.Button.active)
@@ -46,7 +46,7 @@ struct TemplatesSelectionView: View {
             LazyHStack {
                 ForEach(model.templates) { item in
                     Button {
-                        model.onModelTap(model: item)
+                        model.onTemplateTap(model: item)
                     } label: {
                         EditableView<TemplatePreview>(
                             content: TemplatePreview(viewModel: item),

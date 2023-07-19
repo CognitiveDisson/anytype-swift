@@ -104,7 +104,8 @@ final class EditorAssembly {
             alertHelper: AlertHelper(viewController: controller),
             templateSelectionCoordinator: TemplateSelectionCoordinator(
                 navigationContext: navigationContext,
-                templatesModulesAssembly: modulesDI.templatesAssembly()
+                templatesModulesAssembly: modulesDI.templatesAssembly(),
+                editorAssembly: coordinatorsDI.editor()
             )
         )
         

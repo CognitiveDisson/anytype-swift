@@ -270,6 +270,9 @@
 "TemplateOptions.Alert.Duplicate" = "Duplicate";
 "TemplateOptions.Alert.Delete" = "Delete";
 
+"TemplateEditing.Title" = "Edit template";
+"TemplateEditing.SelectButtonTitle" = "Select template";
+
 "To Bin" = "To Bin";
 
 // MARK: - Context Menu

@@ -1240,6 +1240,8 @@
 		8638777A2A5808620024F814 /* TemplatesSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863877792A5808620024F814 /* TemplatesSelectionView.swift */; };
 		8638777C2A58088F0024F814 /* TemplatesSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638777B2A58088F0024F814 /* TemplatesSelectionViewModel.swift */; };
 		8639E0142A6020E700F52ED2 /* TemplatesSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8639E0132A6020E700F52ED2 /* TemplatesSubscriptionService.swift */; };
+		867519E22A669146001C2346 /* EditingTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867519E12A669146001C2346 /* EditingTemplateViewController.swift */; };
+		867519E52A67B911001C2346 /* KeyboardReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867519E42A67B911001C2346 /* KeyboardReadable.swift */; };
 		867580042A58306A0008566A /* TemplatePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867580032A58306A0008566A /* TemplatePreview.swift */; };
 		86760D112A666F4400E915C9 /* HeaderViewSizeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86760D102A666F4400E915C9 /* HeaderViewSizeConfiguration.swift */; };
 		86947EFF2A56B91D00CD7335 /* XCTests+Eventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86947EFE2A56B91D00CD7335 /* XCTests+Eventually.swift */; };
@@ -2697,6 +2699,8 @@
 		863877792A5808620024F814 /* TemplatesSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesSelectionView.swift; sourceTree = "<group>"; };
 		8638777B2A58088F0024F814 /* TemplatesSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesSelectionViewModel.swift; sourceTree = "<group>"; };
 		8639E0132A6020E700F52ED2 /* TemplatesSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesSubscriptionService.swift; sourceTree = "<group>"; };
+		867519E12A669146001C2346 /* EditingTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTemplateViewController.swift; sourceTree = "<group>"; };
+		867519E42A67B911001C2346 /* KeyboardReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardReadable.swift; sourceTree = "<group>"; };
 		867580032A58306A0008566A /* TemplatePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatePreview.swift; sourceTree = "<group>"; };
 		86760D102A666F4400E915C9 /* HeaderViewSizeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewSizeConfiguration.swift; sourceTree = "<group>"; };
 		86947EFE2A56B91D00CD7335 /* XCTests+Eventually.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "XCTests+Eventually.swift"; path = "AnyTypeTests/Extensions/XCTests+Eventually.swift"; sourceTree = SOURCE_ROOT; };
@@ -6683,6 +6687,7 @@
 		3D486C162631726A00A9B625 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				867519E32A67B902001C2346 /* Keyboard */,
 				2E2EA2C62A53385000569E1E /* DotsView */,
 				2E52DE652A1CDF3D00F16815 /* LineProgressBar */,
 				2AEE3E6929C1C2D3007C72AF /* HostingController */,
@@ -8012,6 +8017,22 @@
 			path = Selection;
 			sourceTree = "<group>";
 		};
+		867519E02A669133001C2346 /* Editing */ = {
+			isa = PBXGroup;
+			children = (
+				867519E12A669146001C2346 /* EditingTemplateViewController.swift */,
+			);
+			path = Editing;
+			sourceTree = "<group>";
+		};
+		867519E32A67B902001C2346 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				867519E42A67B911001C2346 /* KeyboardReadable.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 		867580022A582F110008566A /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -8277,6 +8298,7 @@
 		C99DCE8F283B6C270051F99D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				867519E02A669133001C2346 /* Editing */,
 				863877782A58084B0024F814 /* Selection */,
 				863877762A5808100024F814 /* Picker */,
 				863877752A5808050024F814 /* Popup */,
@@ -9609,6 +9631,7 @@
 				2E0DAF1B28A17DB400F43320 /* SetPrefilledFieldsBuilder.swift in Sources */,
 				2E7C446B2892E66D0062287C /* SetFiltersDate.swift in Sources */,
 				538F172D272C2F75009528E7 /* ObjectSearchViewModel.swift in Sources */,
+				867519E52A67B911001C2346 /* KeyboardReadable.swift in Sources */,
 				12DE405D264AE455007B5074 /* LayoutProperty.swift in Sources */,
 				3D5A415B2703132800F1F6A1 /* SlashActionOther.swift in Sources */,
 				125B6EC526F235F400BCD7D6 /* MentionsViewController.swift in Sources */,
@@ -9851,6 +9874,7 @@
 				12AB96362800867B008E32EA /* StandardButtonModel.swift in Sources */,
 				3D24913127BD271900821595 /* SubscriptionToggler.swift in Sources */,
 				3DF80F3326EF8552000492F3 /* EmptyToggleButtonBuilder.swift in Sources */,
+				867519E22A669146001C2346 /* EditingTemplateViewController.swift in Sources */,
 				2A673C0F29B0B39300E3D672 /* SettingsCoordinatorAssembly.swift in Sources */,
 				125B6ED426F235F400BCD7D6 /* SlashMenuContentConfigurationFactory.swift in Sources */,
 				0A83081125D562AC0067EEC9 /* ObjectActionsService.swift in Sources */,

@@ -29,8 +29,8 @@ let package = Package(
                 .linkedLibrary("c++")
             ],
             plugins: [
-                .plugin(name: "ServiceGenPlugin", package: "AnytypeSwiftCodegen"),
-                .plugin(name: "SourceryGenPlugin", package: "SourceryGenPlugin")
+//                .plugin(name: "ServiceGenPlugin", package: "AnytypeSwiftCodegen"),
+//                .plugin(name: "SourceryGenPlugin", package: "SourceryGenPlugin")
             ]
         ),
         .binaryTarget(name: "Lib", path: "../../Dependencies/Middleware/Lib.xcframework")

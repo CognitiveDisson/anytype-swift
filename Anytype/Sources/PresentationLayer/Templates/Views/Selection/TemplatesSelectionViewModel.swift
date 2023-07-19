@@ -8,12 +8,14 @@ final class TemplatesSelectionViewModel: ObservableObject {
     @Published var isEditingState = false
     @Published var templates = [TemplatePreviewModel]()
     var templateOptionsHandler: ((@escaping (TemplateOptionAction) -> Void) -> Void)?
+    var templateEditingHandler: ((BlockId) -> Void)?
     
     private var userTemplates = [TemplatePreviewModel]() {
         didSet {
             updateTemplatesList()
         }
     }
+    
     private let interactor: TemplateSelectionInteractorProvider
     private let templatesService: TemplatesServiceProtocol
     private let onTemplateSelection: (BlockId) -> Void
@@ -33,8 +35,23 @@ final class TemplatesSelectionViewModel: ObservableObject {
         }.store(in: &cancellables)
     }
     
-    func onModelTap(model: TemplatePreviewModel) {
+    func onTemplateTap(model: TemplatePreviewModel) {
         onTemplateSelection(model.id)
+    }
+    
+    func onAddTemplateTap() {
+        Task { [weak self] in
+            do {
+                guard let objectId = try await self?.templatesService.templateCreateFromObjectType(objectId: interactor.objectTypeId.rawValue) else {
+                    return
+                }
+                
+                self?.templateEditingHandler?(objectId)
+            } catch {
+                print(error)
+            }
+            
+        }
     }
     
     func onEditingButonTap(model: TemplatePreviewModel) {
@@ -52,7 +69,7 @@ final class TemplatesSelectionViewModel: ObservableObject {
                 case .duplicate:
                     try await templatesService.cloneTemplate(blockId: templateViewModel.id)
                 case .editTemplate:
-                    fatalError()
+                    templateEditingHandler?(templateViewModel.id)
                 case .setAsDefault:
                     try await interactor.setDefaultTemplate(model: templateViewModel)
                 }

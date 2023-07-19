@@ -14,13 +14,16 @@ protocol TemplateSelectionCoordinatorProtocol: AnyObject {
 final class TemplateSelectionCoordinator: TemplateSelectionCoordinatorProtocol {
     private let navigationContext: NavigationContextProtocol
     private let templatesModuleAssembly: TemplateModulesAssembly
+    private let editorAssembly: EditorAssembly
     
     init(
         navigationContext: NavigationContextProtocol,
-        templatesModulesAssembly: TemplateModulesAssembly
+        templatesModulesAssembly: TemplateModulesAssembly,
+        editorAssembly: EditorAssembly
     ) {
         self.navigationContext = navigationContext
         self.templatesModuleAssembly = templatesModulesAssembly
+        self.editorAssembly = editorAssembly
     }
     
     @MainActor
@@ -41,6 +44,10 @@ final class TemplateSelectionCoordinator: TemplateSelectionCoordinatorProtocol {
         
         view.model.templateOptionsHandler = { [weak self] closure in
             self?.showTemplateOptions(handler: closure)
+        }
+        
+        view.model.templateEditingHandler = { [weak self] blockId in
+            self?.showTemplateEditing(blockId: blockId)
         }
         
         let viewModel = AnytypePopupViewModel(contentView: view, popupLayout: .intrinsic)
@@ -70,5 +77,37 @@ final class TemplateSelectionCoordinator: TemplateSelectionCoordinatorProtocol {
         
         navigationContext.present(alertController)
     }
+    
+    private func showTemplateEditing(blockId: BlockId) {
+        let editorPage = editorAssembly.buildEditorModule(
+            browser: nil,
+            data: .page(.init(objectId: blockId, isSupportedForEdit: true, isOpenedForPreview: false))
+        )
+        
+        
+        let editorView = EditorView(viewController: editorPage.vc)
+        let editingTemplateView = EditingTemplateView(editorView: editorView.eraseToAnyView())
+        
+        
+        navigationContext.present(editingTemplateView)
+//        navigationContext.dismissAllPresented(animated: true) { [weak navigationContext] in
+//            
+//        }
+    }
 }
 
+struct EditorView: UIViewControllerRepresentable {
+    let viewController: UIViewController
+    
+    init(viewController: UIViewController) {
+        self.viewController = viewController
+    }
+    
+    func makeUIViewController(context: Context) -> UIViewController {
+        return viewController
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        
+    }
+}
