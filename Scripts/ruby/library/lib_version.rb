@@ -20,7 +20,7 @@ class LibraryFile
 
 	private_class_method def self.validate_library_file_path
 	    unless File.exists? Constants::LIBRARY_FILE_PATH
-	      puts "I can't find library file at #{libraryFilePath}."
+	      puts "I can't find library file at #{Constants::LIBRARY_FILE_PATH}."
 	      exit 1
 	    end
 	end
